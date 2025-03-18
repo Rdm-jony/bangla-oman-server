@@ -10,7 +10,7 @@ require('dotenv').config()
 // Middleware
 app.use(express.json());
 app.use(cors({
-    origin: ['https://bangla-oman.web.app']
+    origin: ['https://bangla-oman.web.app','http://localhost:5173']
 }));
 
 
@@ -29,7 +29,7 @@ async function run() {
     try {
 
         // Send a ping to confirm a successful connection
-        await client.db("admin").command({ ping: 1 });
+        // await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
         const sentenceCollection = client.db(process.env.DB_USER).collection("sentenceCollection")
 
