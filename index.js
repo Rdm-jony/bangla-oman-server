@@ -9,7 +9,7 @@ require('dotenv').config()
 
 // Middleware
 app.use(express.json());
-app.use(cors({origin:['https://bangla-oman.web.app']}));
+app.use(cors({origin:['https://bangla-oman.web.app/']}));
 
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
