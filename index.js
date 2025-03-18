@@ -9,7 +9,9 @@ require('dotenv').config()
 
 // Middleware
 app.use(express.json());
-app.use(cors({origin:['https://bangla-oman.web.app/']}));
+app.use(cors({
+    origin: ['https://bangla-oman.web.app']
+}));
 
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
@@ -29,16 +31,16 @@ async function run() {
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
-        const sentenceCollection=client.db(process.env.DB_USER).collection("sentenceCollection")
+        const sentenceCollection = client.db(process.env.DB_USER).collection("sentenceCollection")
 
         app.post("/translate", async (req, res) => {
-            
+
             try {
                 const sentence = req.body;
-                const result=await sentenceCollection.insertOne(sentence)
+                const result = await sentenceCollection.insertOne(sentence)
                 res.send(result)
 
-              
+
             } catch (error) {
                 res.status(500).json({ error: "Translation failed" });
             }
